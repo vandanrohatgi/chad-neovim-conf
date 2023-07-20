@@ -30,6 +30,23 @@ local options = {
       resize_window = true,
     },
   },
+  diagnostics= {
+    enable = true,
+    show_on_dirs = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+  log = {
+    enable=true,
+    truncate=true,
+    types={
+      diagnostics=true,
+    },
+  },
   renderer = {
     root_folder_label = false,
     highlight_git = true,
@@ -38,7 +55,6 @@ local options = {
     indent_markers = {
       enable = false,
     },
-
     icons = {
       show = {
         file = true,
