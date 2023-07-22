@@ -5,11 +5,11 @@ local plugins = {
       ensure_installed = {
         "gopls",
         "golines",
-        "goimports"
+        "goimports",
       },
     },
   },
-  {
+    {
     "mfussenegger/nvim-dap",
     init = function()
       require("core.utils").load_mappings("dap")
