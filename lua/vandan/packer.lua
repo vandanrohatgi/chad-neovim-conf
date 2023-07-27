@@ -10,6 +10,29 @@ return require('packer').startup(function(use)
 	}
 	use { "catppuccin/nvim", as = "catppuccin" }
 use ('nvim-treesitter/nvim-treesitter', {run= ':TSUpdate'})
+use ('ThePrimeagen/harpoon')
+use ('mbbill/undotree')
+use ('tpope/vim-fugitive')
+use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  requires = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},             -- Required
+    {                                      -- Optional
+      'williamboman/mason.nvim',
+      run = function()
+        pcall(vim.api.nvim_command, 'MasonUpdate')
+      end,
+    },
+    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},     -- Required
+    {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    {'L3MON4D3/LuaSnip'},     -- Required
+  }
+}
 end)
 
 
