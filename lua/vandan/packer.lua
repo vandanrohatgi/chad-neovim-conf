@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use ("folke/tokyonight.nvim")
     use ('nvim-treesitter/nvim-treesitter', {run= ':TSUpdate'})
     use ('ThePrimeagen/harpoon')
     use ('tpope/vim-fugitive')
@@ -18,11 +18,25 @@ return require('packer').startup(function(use)
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/nvim-cmp",
-        "hrsh7th/cmp-buffer",
         'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-
+        'L3MON4D3/LuaSnip',
     }
+
+    -- Lua
+use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+
+use { "windwp/nvim-autopairs"}
 end)
 
 
