@@ -12,7 +12,7 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 vim.opt.swapfile =  true
-vim.opt.backup = true
+vim.opt.backup = false
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -26,5 +26,5 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+--vim.opt.colorcolumn = "80"
 
