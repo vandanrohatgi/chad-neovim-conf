@@ -11,7 +11,7 @@ local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local util = require "lspconfig/util"
 
-
+-- gopls settings
 lspconfig.gopls.setup{
     capabilities = lsp_capabilities,
     cmd = {"gopls"},
@@ -33,6 +33,7 @@ lspconfig.gopls.setup{
     }
 }
 
+-- auto complete settings
 local cmp = require('cmp')
 cmp.setup({
     snippet = {
@@ -95,3 +96,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+-- auto-format on save
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
