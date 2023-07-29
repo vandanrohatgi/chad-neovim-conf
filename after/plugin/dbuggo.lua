@@ -4,7 +4,6 @@ if not (dap_ok) then
     return
 end
 
-local ui = require('dap.ui')
 
 require('dap').set_log_level('INFO') -- Helps when configuring DAP, see logs with :DapShowLog
 
@@ -65,17 +64,9 @@ vim.keymap.set({ 'n', 'v' }, '<Leader>dv', function()
     sidebar.open()
 end) -- open side bar widget when debugging
 
--- Start debugging session
-vim.keymap.set("n", "<localleader>ds", function()
-    dap.continue()
-    ui.toggle({})
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
-end)
-
 -- Close debugger and clear breakpoints
 vim.keymap.set("n", "<leader>de", function()
     dap.clear_breakpoints()
-    ui.toggle({})
     dap.terminate()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
 end)
