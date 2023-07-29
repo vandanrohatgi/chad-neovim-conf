@@ -6,12 +6,12 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use ("folke/tokyonight.nvim")
-    use ('nvim-treesitter/nvim-treesitter', {run= ':TSUpdate'})
-    use ('ThePrimeagen/harpoon')
-    use ('tpope/vim-fugitive')
+    use("folke/tokyonight.nvim")
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use('ThePrimeagen/harpoon')
+    use('tpope/vim-fugitive')
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -23,26 +23,25 @@ return require('packer').startup(function(use)
     }
 
     -- Lua
-use {
-  "folke/which-key.nvim",
-  config = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
     }
-  end
-}
-use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
-}
-use { "windwp/nvim-autopairs"}
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    use { "windwp/nvim-autopairs" }
+    use { "mfussenegger/nvim-dap" }
+    use { "leoluz/nvim-dap-go" }
 end)
-
-
-
