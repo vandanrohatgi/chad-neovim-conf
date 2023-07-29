@@ -43,5 +43,4 @@ return require('packer').startup(function(use)
     }
     use { "windwp/nvim-autopairs" }
     use { "mfussenegger/nvim-dap" }
-    use { "leoluz/nvim-dap-go" }
 end)
