@@ -39,6 +39,9 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+textwidth = 80
+--formatoptions+=tca
+
 vim.opt.wrap = false
 
 -- very annoying. IF ever using undo-tree just set undofile = true

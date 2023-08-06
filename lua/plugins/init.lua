@@ -1,34 +1,79 @@
 return {
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            local builtin = require('telescope.builtin')
+            vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+            vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+            vim.keymap.set('n', '<leader>ps', function()
+                builtin.grep_string({ search = vim.fn.input("Grep > ") })
+            end)
+        end
+    },
+    "folke/tokyonight.nvim",
+    {
+        'ThePrimeagen/harpoon',
+        config = function()
+            local mark = require('harpoon.mark')
+            local ui = require('harpoon.ui')
 
-	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim' } 
-	},
-	"folke/tokyonight.nvim",
-	{
-		'nvim-treesitter/nvim-treesitter', 
-		 build = ':TSUpdate' ,
-	},
-	'ThePrimeagen/harpoon',
-	'tpope/vim-fugitive',
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/nvim-cmp",
-	'L3MON4D3/LuaSnip',
-	{
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	},
-	"mfussenegger/nvim-dap",
-	{
-		"windwp/nvim-autopairs",
-		config =  function()
-			npairs=require 'nvim-autopairs'
+            vim.keymap.set("n", "<leader>a", mark.add_file)
+            vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+            vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
+            vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
+            vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
+            vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+        end
+    },
+    {
+        'tpope/vim-fugitive',
+        config = function()
+            vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+        end
+    },
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            local mason = require("mason")
+            local options = {
+                ensure_installed = {
+                    "delve",
+                }, -- not an option from mason.nvim
+                max_concurrent_installers = 10,
+            }
+
+            mason.setup(options)
+
+            vim.api.nvim_create_user_command("MasonInstallAll", function()
+                vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
+            end, {})
+        end
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'gopls',
+                    'lua_ls'
+                }
+            })
+        end
+    },
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    },
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            local npairs = require 'nvim-autopairs'
             npairs.setup()
-		end
-	},
+        end
+    },
 }
