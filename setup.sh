@@ -1,14 +1,12 @@
 #!/usr/bin/env zsh
 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        sudo apt-get install ripgrep
+        sudo apt-get install neovim=0.9.1 ripgrep=13.0.0
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-        brew install ripgrep
+        brew install neovim@0.9.1 ripgrep@13.0.0
 elif [[ "$OSTYPE" == "msys" ]]; then
-        scoop install ripgrep
+        echo "windows?!"
+        scoop install neovim ripgrep
 else
         echo "un-supported system"
 	exit
