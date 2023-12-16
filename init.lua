@@ -55,7 +55,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -64,3 +64,5 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<leader>pu", ":pu<CR>")
+vim.api.nvim_set_keymap('n', 'i', 'a', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true, silent = true })
